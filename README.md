@@ -4,7 +4,7 @@
 
 1. Clonar proyecto
 ```
-git clone https://
+git clone git@github.com:williamitz/nest-shell.git
 ```
 
 2. Clonar archivo __.env.template__ y renombrar a __.env__
