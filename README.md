@@ -16,7 +16,17 @@ git clone git@github.com:williamitz/nest-shell.git
 docker-compose up -d
 ```
 
-5. Correr aplicación
+5. Ejecutar config seed
+```
+yarn seed:config
+```
+
+6. Ejecutar seeder
+```
+yarn seed:run
+```
+
+7. Correr aplicación
 ```
 yarn start:dev
 ```

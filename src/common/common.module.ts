@@ -16,6 +16,7 @@ import env from './environments/env-config';
 
         TypeOrmModule.forRootAsync(typeOrmConfig)
     ],
+    
     exports: [
         TypeOrmModule,
         ConfigModule
