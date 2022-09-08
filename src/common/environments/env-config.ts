@@ -13,4 +13,7 @@ export default () => ({
 
     port: process.env.APP_PORT,
     page_limit: process.env.PAGE_LIMIT,
+
+    typeorm_seeding_factories : process.env.TYPEORM_SEEDING_FACTORIES,
+    typeorm_seeding_seeds : process.env.TYPEORM_SEEDING_SEEDS
 });

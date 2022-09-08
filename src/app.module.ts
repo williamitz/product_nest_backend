@@ -1,20 +1,20 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigService } from '@nestjs/config';
 
-import { databaseConfig } from './environments/database.env';
-import env from './environments/env';
-import { envValidation } from './environments/env-validation';
+import { CommonModule } from './common/common.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
-    
-    ConfigModule.forRoot({
-      load: [env],
-      validationSchema: envValidation
-    }),
+    CommonModule,
 
-    TypeOrmModule.forRootAsync(databaseConfig)
+    UserModule,
+
+    /**
+     * 
+     * more modules
+     * 
+     */
   ],
 })
 export class AppModule {
