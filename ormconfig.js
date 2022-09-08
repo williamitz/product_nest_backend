@@ -6,7 +6,7 @@ module.exports = {
     database: process.env.DB_NAME,
     port: +process.env.DB_PORT,
 
-    entities: ['src/**/*.entity.{ts,js}'],
-    seeds: ['src/common/seeds/**/*{.ts,.js}'],
-    factories: ['src/common/factories/**/*{.ts,.js}'],
+    entities: [process.env.TYPEORM_SEEDING_ENTITIES],
+    seeds: [process.env.TYPEORM_SEEDING_SEEDS],
+    factories: [process.env.TYPEORM_SEEDING_FACTORIES],
 }

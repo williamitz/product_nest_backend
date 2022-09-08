@@ -14,11 +14,6 @@ export const typeOrmConfig: TypeOrmModuleAsyncOptions = ({
       synchronize: true,
       autoLoadEntities: true,
 
-      entities: [__dirname + '/../../**/*.entity.{ts,js}'],
-      
-      // seeds: [ __dirname, '../seeds/**/*{.ts,.js}'],
-      // factories: [__dirname,  '../factories/**/*{.ts,.js}'],
-
     }),
 
     inject: [ConfigService],
