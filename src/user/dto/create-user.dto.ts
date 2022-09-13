@@ -10,6 +10,6 @@ export class CreateUserDto {
     @IsString()
     @MinLength(6)
     @IsOptional()
-    phon?: string;
+    phone?: string;
         
 }

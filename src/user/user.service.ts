@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -13,8 +13,18 @@ export class UserService {
     private readonly _userrepo: Repository<User>
   ) {}
 
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  async create( body: CreateUserDto) {
+    
+    try {
+      
+      let newUser = this._userrepo.create( {...body} );
+
+      return await this._userrepo.save( newUser );
+
+    } catch (error) {
+      throw new BadRequestException('Bad request to create user');
+    }
+    
   }
 
   async findAll() {
@@ -29,15 +39,38 @@ export class UserService {
 
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: string) {
+    
+    try {
+      return await this._userrepo.findOne({ where: {id} });
+    } catch (error) {
+      throw new BadRequestException( 'Bad request find by id' );
+    }
+    
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update( id: string, body: UpdateUserDto ) {
+    try {
+
+      let userToUpdate = await this._userrepo.preload( { id, ...body } );
+
+      if( !userToUpdate ) throw new NotFoundException(`Not found user by id: ${id}`);
+
+      return this._userrepo.save( userToUpdate );
+      
+    } catch (error) {
+      throw new BadRequestException('Bad request to update user');
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: string) {
+    try {
+      
+      await this._userrepo.delete({id});
+
+      return `This action removes a #${id} user`;
+    } catch (error) {
+      throw new BadRequestException('Bad request to delete user');
+    }
   }
 }
