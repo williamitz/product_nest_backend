@@ -1,19 +1,26 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, BadRequestException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Auth } from 'src/auth/decorator/auth.decorator';
+import { JwtUser } from 'src/auth/decorator/jwt-user.decorator';
+import { User } from './entities/user.entity';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
+  @Auth()
+  create(@Body() createUserDto: CreateUserDto, @JwtUser() user: User) {
+    console.log({ user });
     return this.userService.create(createUserDto);
   }
-
+  
   @Get()
-  findAll() {
+  @Auth()
+  findAll( @JwtUser() user: User ) {
+    console.log({ user });
     // throw new BadRequestException('Bad request');
     return this.userService.findAll();
   }

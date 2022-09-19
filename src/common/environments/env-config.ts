@@ -15,5 +15,12 @@ export default () => ({
     page_limit: process.env.PAGE_LIMIT,
 
     typeorm_seeding_factories : process.env.TYPEORM_SEEDING_FACTORIES,
-    typeorm_seeding_seeds : process.env.TYPEORM_SEEDING_SEEDS
+    typeorm_seeding_seeds : process.env.TYPEORM_SEEDING_SEEDS,
+
+    auth: {
+        jwt_secret: process.env.JWT_SECRET,
+        jwt_expires_in: process.env.JWT_EXPIRES_IN,
+        strategy: process.env.STRATEGY,
+    }
+    
 });

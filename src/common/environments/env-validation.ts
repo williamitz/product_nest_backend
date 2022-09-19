@@ -16,4 +16,8 @@ export const envValidation = Joi.object({
     TYPEORM_SEEDING_ENTITIES: Joi.string().default('src/**/*.entity.{ts,js}'),
     TYPEORM_SEEDING_SEEDS: Joi.string().default('src/common/seeds/**/*{.ts,.js}'),
     TYPEORM_SEEDING_FACTORIES: Joi.string().default('src/common/factories/**/*{.ts,.js}'),
+
+    JWT_SECRET: Joi.string().required(),
+    JWT_EXPIRES_IN: Joi.string().required(),
+    STRATEGY: Joi.string().required(),
 })
