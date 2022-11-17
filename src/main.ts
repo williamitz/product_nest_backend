@@ -6,6 +6,8 @@ import { v4 as uuid } from 'uuid';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // esto hace conflicto a la hora de realizar la conversion de datos con el class-transofrmer
+
   // app.useGlobalPipes(
   //   new ValidationPipe({
   //     whitelist: true,
