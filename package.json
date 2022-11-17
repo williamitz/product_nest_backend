@@ -35,7 +35,9 @@
         "bcrypt": "^5.0.1",
         "class-transformer": "^0.5.1",
         "class-validator": "^0.13.2",
+        "google-auth-library": "^8.7.0",
         "joi": "^17.6.0",
+        "moment-timezone": "^0.5.39",
         "passport": "^0.6.0",
         "passport-jwt": "^4.0.0",
         "pg": "^8.8.0",
@@ -43,7 +45,8 @@
         "rimraf": "^3.0.2",
         "rxjs": "^7.2.0",
         "typeorm": "^0.3.9",
-        "typeorm-seeding": "^1.6.1"
+        "typeorm-seeding": "^1.6.1",
+        "uuid": "^9.0.0"
     },
     "devDependencies": {
         "@nestjs/cli": "^9.0.0",
@@ -58,6 +61,7 @@
         "@types/supertest": "^2.0.11",
         "@typescript-eslint/eslint-plugin": "^5.0.0",
         "@typescript-eslint/parser": "^5.0.0",
+        "@types/uuid": "^8.3.4",
         "jest": "28.1.2",
         "prettier": "^2.3.2",
         "source-map-support": "^0.5.20",

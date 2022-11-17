@@ -19,4 +19,11 @@ export class RegisterUserDto {
     @MinLength(1)
     fullName: string;
 
+    @IsString()
+    @Matches(
+        /^[0-9+\s]{6,15}$/, {
+        message: 'Teléfono inválido +51 000 000 000'
+    })
+    phone: string;
+
 }

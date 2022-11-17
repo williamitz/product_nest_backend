@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterUserDto } from './dto/register-user.dto';
-import { LoginUserDto } from './dto/login-user.dto';
+import { LoginUserDto, LoginGoogle } from './dto/login-user.dto';
 import { Auth } from './decorator/auth.decorator';
 
 @Controller('auth')
@@ -16,6 +16,16 @@ export class AuthController {
   @Post('login')
   login(@Body() body: LoginUserDto) {
     return this.authService.login(body);
+  }
+
+  @Post('login/google')
+  loginWithGoogle( @Body() body: LoginGoogle ) {
+    return this.authService.loginWithGoogle( body );
+  }
+
+  @Post('singin/google')
+  singinWithGoogle( @Body() body: LoginGoogle ) {
+    return this.authService.singinWithGoogle( body );
   }
 
   @Get()

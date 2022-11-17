@@ -7,10 +7,11 @@ define(User, () => {
     
     const newUser = new User();
 
-    newUser.email = randEmail();
-    newUser.phone = randPhoneNumber({countryCode: 'PE'});
-    newUser.fullName = randFullName();
-    newUser.password = bscrypt.hashSync( '123456Cq', 10 );
+    newUser.email     = randEmail();
+    newUser.phone     = randPhoneNumber({countryCode: 'PE'});
+    newUser.fullName  = randFullName();
+    newUser.password  = bscrypt.hashSync( '123456Cq', 10 );
+    newUser.google    = false;
     
     return newUser;
  });

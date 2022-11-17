@@ -1,4 +1,6 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Product } from '../../product/entities/product.entity';
+import { Country } from '../../country/entities/country.entity';
 
 @Entity()
 export class User {
@@ -9,7 +11,7 @@ export class User {
     @Column({
         type: 'text',
         unique: true,
-        nullable: true
+        nullable: false
     })
     email: string;
 
@@ -29,6 +31,26 @@ export class User {
         select: false
     })
     password: string;
+    
+    @Column({
+        type: 'boolean',
+        default: false
+    })
+    google: boolean;
+
+    @OneToMany(
+        ()     => Product,
+        (p)    => p.user
+    )
+    products: Product[];
+
+    @ManyToOne( 
+        () => Country,
+        (c) => c.user,
+        { eager: true }
+    )
+    @JoinColumn()
+    country: Partial<Country>;
     
     @BeforeInsert()
     beforeInsert() {

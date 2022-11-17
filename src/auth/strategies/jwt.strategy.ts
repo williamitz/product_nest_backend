@@ -23,6 +23,7 @@ export class JwtEstrategy extends PassportStrategy( Strategy ) {
     async validate( payload: IJwtPayload ) {
         
         const { email } = payload;
+        console.log('validate email =====', email);
 
         const userFinded = await this._authsvc.findUserBy( email );
 

@@ -16,11 +16,16 @@ export default () => ({
 
     typeorm_seeding_factories : process.env.TYPEORM_SEEDING_FACTORIES,
     typeorm_seeding_seeds : process.env.TYPEORM_SEEDING_SEEDS,
+    typeorm_seeding_entities: process.env.TYPEORM_SEEDING_ENTITIES,
 
     auth: {
         jwt_secret: process.env.JWT_SECRET,
         jwt_expires_in: process.env.JWT_EXPIRES_IN,
         strategy: process.env.STRATEGY,
+    },
+
+    google: {
+        client_id: process.env.CLIENT_ID,
     }
     
 });

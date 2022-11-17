@@ -20,4 +20,5 @@ export const envValidation = Joi.object({
     JWT_SECRET: Joi.string().required(),
     JWT_EXPIRES_IN: Joi.string().required(),
     STRATEGY: Joi.string().required(),
+    CLIENT_ID: Joi.string().required(),
 })
